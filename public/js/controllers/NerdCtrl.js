@@ -1,8 +1,7 @@
 angular.module('NerdCtrl', []).controller('NerdController', function($scope, $http) {
 
 	$scope.tagline = 'Nothing beats a pocket protector!';
-	$scope.showEdit = false; 
-
+	$scope.editMode = false; 
 
 	$scope.items = [
 		{"name" : 'Ada Marie Smithsonian'},
@@ -10,24 +9,24 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope, $ht
     	{"name" : 'Veronica Sublime'}
 	];
 	
-	$scope.add = function() {
-		$scope.items.push($scope.input);
+	$scope.addItem = function() {
+		$scope.items.push({ "name" : $scope.input });
+		alert("pushed " + $scope.input); 
 		$scope.input = ''; 
+		return $scope.input; 
 	};
 
 	$scope.remove = function(index) {
     	$scope.items.splice(index, 1);
 	};
 
-	$scope.update = function(index) {
-		$scope.editMode = true;
-        previousValue = scope.items;
-        
-	}
+	$scope.editItem = function(item) {
+		item.oldName = item.name;	
+	}; 
 
-	$scope.cancel = function(value) {
+	$scope.cancel = function(item) {
 		$scope.editMode = false; 
-		console.log('Canceled editing', value);
+		item.name = item.oldName;	
 	}; 
 
 	$scope.sendQuery = function() {

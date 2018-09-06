@@ -1,24 +1,24 @@
 <div class="jumbotron text-center">
 	<h1>Nerds and Proud</h1>
-
 	<p>{{ tagline }}</p>
+</div>
 
 	<FORM>
 		<ul>
 			<li ng-repeat="item in items">
 				{{ item.name }} 
-				<button data-ng-click="editMode = true; editAppKey(item)" data-ng-hide="editMode" class="btn btn-default">Edit</button>
-				<button ng-click="remove($index)" data-ng-hide="editMode">Remove</button>
+				<button data-ng-click="editMode = true; editItem(item)" data-ng-hide="editMode" class="btn btn-default">Edit</button>
+				<button ng-click="remove($index)" data-ng-hide="editMode" class="btn btn-default">Remove</button>
 				<span data-ng-hide="editMode"></span>
 				<input type="text" data-ng-show="editMode" data-ng-model="item.name" data-ng-required />			
-				<button ng-click="update($index)" data-ng-show="editMode">Save</button>
-				<button ng-click="editMode = false; cancel(item.name)" data-ng-show="editMode">Cancel</button>
+				<button ng-click="editMode = false; saveEdit(item)" data-ng-show="editMode" class="btn btn-default">Save</button>
+				<button ng-click="editMode = false; cancel(item)" data-ng-show="editMode" class="btn btn-default">Cancel</button>
 			</li>
 		</ul>
 		<div>
 			<input type="text" ng-model="input">
-			<button type="submit" ng-click="add()">Add</button>
+			<button type="submit" ng-click="addItem()">Add</button>
 		</div>
     <input type="button" ng-click="sendQuery()"  value="Submit" />
 </FORM>
-</div>
+
