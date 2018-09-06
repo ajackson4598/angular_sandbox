@@ -2,4 +2,23 @@
 	<h1>Nerds and Proud</h1>
 
 	<p>{{ tagline }}</p>
+
+	<FORM>
+		<ul>
+			<li ng-repeat="item in items">
+				{{ item }} <button type="button" ng-click="editItem(item)">UPDATE</button>
+				<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editAppKey(item)" class="btn btn-default">Edit</button>
+				<button ng-click="remove($index)">Remove</button>
+				<span data-ng-hide="editMode"></span>
+				<input type="text" data-ng-show="editMode" data-ng-model="item" data-ng-required />			
+			</li>
+		</ul>
+
+
+		<div>
+			<input type="text" ng-model="input">
+			<button type="submit" ng-click="add()">Add</button>
+		</div>
+    <input type="button" ng-click="sendQuery()"  value="Submit" />
+</FORM>
 </div>

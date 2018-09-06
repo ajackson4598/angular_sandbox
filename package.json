@@ -9,6 +9,7 @@
     "express": "^4.16.3",
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.13",
+    "mongoui": "^4.2.1",
     "webpack": "^4.17.2"
   },
   "scripts": {
