@@ -5,9 +5,9 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope, $ht
 
 
 	$scope.items = [
-    	'Ada Marie Smithsonian',
-    	'Poindexter Nichelle',
-    	'Veronica Sublime'
+		{"name" : 'Ada Marie Smithsonian'},
+    	{"name" : 'Poindexter Nichelle'},
+    	{"name" : 'Veronica Sublime'}
 	];
 	
 	$scope.add = function() {
@@ -19,13 +19,16 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope, $ht
     	$scope.items.splice(index, 1);
 	};
 
-	/*
-	$scope.showEdit = function(item) {
-		alert("showing edit"); 
-
+	$scope.update = function(index) {
+		$scope.editMode = true;
+        previousValue = scope.items;
+        
 	}
-*/
 
+	$scope.cancel = function(value) {
+		$scope.editMode = false; 
+		console.log('Canceled editing', value);
+	}; 
 
 	$scope.sendQuery = function() {
 		console.log("sending post"); 
